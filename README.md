@@ -21,9 +21,9 @@ Gradation cells are colored as follows:
 
 At the top and bottom, depending on the scale, the month or year corresponding to the end of the cell is displayed.
 
-The board can be sorted alphabetically or by expiration date. Users can also provide feedback.
+The board can be sorted alphabetically or by expiration date.
 
-The application is adapted for use on mobile screens.
+The application is adapted for use on mobile screens. Users can also provide feedback.
 
 Under the hood, there is a lightweight Flask framework that handles interaction with the SQLite database and the user. Stylized CSS HTML pages are generated using Jinja templates. During the development of the application, I used ready-made Bootstrap styles, the Python CS50 library, and a cat from memegen.
 
