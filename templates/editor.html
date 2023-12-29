@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<div class="d-flex align-items-center flex-column">
+    <h2>
+        Editor
+    </h2>
+    <form action="/editor" method="post">
+        {% if id %}
+        {% set goodsname = good.goodsname %}
+        {% set enddate = good.enddate %}
+        {% set lastdays1 = good.lastdays1 %}
+        {% set lastdays2 = good.lastdays2 %}
+        <input name="id" type="number" value="{{ id }}" hidden>
+        {% else %}
+        {% set goodsname = "" %}
+        {% set enddate = "" %}
+        {% set lastdays1 = none %}
+        {% set lastdays2 = none %}
+        {% endif %}
+        <div class="mb-2">
+            <input placeholder="Passport" autocomplete="off" autofocus name="goodsname" type="text"
+                value="{{ goodsname }}" class="form-control">
+            <div class="form-text">
+                document name
+            </div>
+        </div>
+        <div class="mb-2">
+            <input name="enddate" type="date" value="{{ enddate }}" class="form-control">
+            <div class="form-text">
+                end date
+            </div>
+        </div>
+        <div class="mb-2">
+            <input placeholder="not necessary" name="lastdays1" type="number" min="0" value={{ lastdays1 }}
+                class="form-control">
+            <div class="form-text">
+                days for renewal
+            </div>
+        </div>
+        <div class="mb-3">
+            <input placeholder="not necessary" name="lastdays2" type="number" min="0" value={{ lastdays2 }}
+                class="form-control">
+            <div class="form-text">
+                days limited action
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success">
+            Save
+        </button>
+        {% if id %}
+        <button type="submit" class="btn btn-danger" name="delete" value={{ id }}>
+            Delete
+        </button>
+        {% endif %}
+        <button type="submit" class="btn btn-primary" name="cancel" value=1>
+            Cancel
+        </button>
+    </form>
+</div>
+
+{% endblock %}

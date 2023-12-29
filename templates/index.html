@@ -1,0 +1,203 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<!-- тут группа кнопок масштаба -->
+<div class="d-flex justify-content-center">
+  <form action="/" method="post">
+    <div class="btn-group btn-group-sm mb-1" role="group" aria-label="Small button group">
+      <button type="submit" class="btn {% if size == 31 %}btn-secondary{% else %}btn-outline-secondary{% endif %}"
+        name="size" value="31">
+        M/d
+      </button>
+      <button type="submit" class="btn {% if size == 92 %}btn-secondary{% else %}btn-outline-secondary{% endif %}"
+        name="size" value="92">
+        3M/d
+      </button>
+      <button type="submit" class="btn {% if size == 26 %}btn-secondary{% else %}btn-outline-secondary{% endif %}"
+        name="size" value="26">
+        6M/w
+      </button>
+      <button type="submit" class="btn {% if size == 52 %}btn-secondary{% else %}btn-outline-secondary{% endif %}"
+        name="size" value="52">
+        1Y/w
+      </button>
+      <button type="submit" class="btn {% if size == 60 %}btn-secondary{% else %}btn-outline-secondary{% endif %}"
+        name="size" value="60">
+        5Y/m
+      </button>
+      <button type="submit" class="btn {% if size == 40 %}btn-secondary{% else %}btn-outline-secondary{% endif %}"
+        name="size" value="40">
+        10Y/3m
+      </button>
+    </div>
+    <!-- тут группа кнопок сортировки -->
+    <div class="btn-group btn-group-sm mb-1" role="group" aria-label="Small button group">
+      <button type="submit" class="btn {% if sort == "a-z" %}btn-secondary{% else %}btn-outline-secondary{% endif %}"
+        name="sort" value="a-z">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sort-alpha-up"
+          viewBox="0 0 16 16">
+          <path fill-rule="evenodd"
+            d="M10.082 5.629 9.664 7H8.598l1.789-5.332h1.234L13.402 7h-1.12l-.419-1.371h-1.781zm1.57-.785L11 2.687h-.047l-.652 2.157h1.351z" />
+          <path
+            d="M12.96 14H9.028v-.691l2.579-3.72v-.054H9.098v-.867h3.785v.691l-2.567 3.72v.054h2.645V14zm-8.46-.5a.5.5 0 0 1-1 0V3.707L2.354 4.854a.5.5 0 1 1-.708-.708l2-1.999.007-.007a.498.498 0 0 1 .7.006l2 2a.5.5 0 1 1-.707.708L4.5 3.707V13.5z" />
+        </svg>
+      </button>
+      <button type="submit" class="btn {% if sort == "z-a" %}btn-secondary{% else %}btn-outline-secondary{% endif %}"
+        name="sort" value="z-a">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+          class="bi bi-sort-alpha-down-alt" viewBox="0 0 16 16">
+          <path d="M12.96 7H9.028v-.691l2.579-3.72v-.054H9.098v-.867h3.785v.691l-2.567 3.72v.054h2.645V7z" />
+          <path fill-rule="evenodd"
+            d="M10.082 12.629 9.664 14H8.598l1.789-5.332h1.234L13.402 14h-1.12l-.419-1.371h-1.781zm1.57-.785L11 9.688h-.047l-.652 2.156h1.351z" />
+          <path
+            d="M4.5 2.5a.5.5 0 0 0-1 0v9.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L4.5 12.293V2.5z" />
+        </svg>
+      </button>
+      <button type="submit" class="btn {% if sort == "9-0" %}btn-secondary{% else %}btn-outline-secondary{% endif %}"
+        name="sort" value="9-0">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sort-up"
+          viewBox="0 0 16 16">
+          <path
+            d="M3.5 12.5a.5.5 0 0 1-1 0V3.707L1.354 4.854a.5.5 0 1 1-.708-.708l2-1.999.007-.007a.498.498 0 0 1 .7.006l2 2a.5.5 0 1 1-.707.708L3.5 3.707V12.5zm3.5-9a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zM7.5 6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zm0 3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zm0 3a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z" />
+        </svg>
+      </button>
+      <button type="submit" class="btn {% if sort == "0-9" %}btn-secondary{% else %}btn-outline-secondary{% endif %}"
+        name="sort" value="0-9">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sort-down-alt"
+          viewBox="0 0 16 16">
+          <path
+            d="M3.5 3.5a.5.5 0 0 0-1 0v8.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L3.5 12.293V3.5zm4 .5a.5.5 0 0 1 0-1h1a.5.5 0 0 1 0 1h-1zm0 3a.5.5 0 0 1 0-1h3a.5.5 0 0 1 0 1h-3zm0 3a.5.5 0 0 1 0-1h5a.5.5 0 0 1 0 1h-5zM7 12.5a.5.5 0 0 0 .5.5h7a.5.5 0 0 0 0-1h-7a.5.5 0 0 0-.5.5z" />
+        </svg>
+      </button>
+    </div>
+  </form>
+</div>
+
+<!-- если записи есть -->
+{% if goods %}
+  <!-- доска с календарем -->
+  <div class="mb-3">
+    {% for row in goods %}
+    <table>
+      <tbody>
+        <!-- первая строка с градацией ------------------------------------------>
+        {% if loop.first %}
+        <tr>
+          <!-- пустая ячейка -->
+          <td class="cell_goods">
+          </td>
+          <!-- конец пустой ячейки -->
+          <!-- градация -->
+          {% for line in sced %}
+          <td colspan="{{ line["parts"] }}" class="cell calendar">
+            {{ line["grad"] }}
+          </td>
+          {% endfor %}
+          <!-- конец градации -->
+        </tr>
+        {% endif %}
+        <!-- конец первой строки с градацией ------------------------------------>
+        <!-- вторая строка с доской --------------------------------------------->
+        <tr>
+          <!-- ячейка с названием -->
+          <td class="cell_goods">
+            <form action="/editor" method="post">
+              <button type="submit" name="edit" value={{ row.id }} class="btn btn-secondary goods"
+                title="Valid for an additional {{ row.today_d }} days, until {{ row.enddate }} (of which {{ row.lastdays2 }} days have limited validity, and {{ row.lastdays1 }} days are required for renewal).">
+                {{ row.goodsname }}
+              </button>
+            </form>
+          </td>
+          <!-- конец ячейки с названием -->
+          <!-- ячейки доски -->
+          {% for _ in range(row.x) %}
+            {% if loop.index <= size %}
+              <td class="cell board full_valid"> <!-- размер смотри в CSS -->
+                {% if loop.index > row.n - row.z %}
+                  <div class="to_reissue">
+                  </div>
+                {% endif %}
+              </td>
+            {% endif %}
+          {% endfor %}
+          {% for _ in range(row.y) %}
+            {% if loop.index <= size - row.x %}
+              <td class="cell board limit_valid"> <!-- размер смотри в CSS -->
+                {% if loop.index > row.n - row.x - row.z%}
+                  <div class="to_reissue">
+                  </div>
+                {% endif %}
+              </td>
+            {% endif %}
+          {% endfor %}
+          {% for _ in range(size) %}
+            {% if loop.index <= size - row.x - row.y %}
+              <td class="cell board empty"> <!-- размер {{ 100 / size }}% смотри в CSS -->
+              </td>
+            {% endif %}
+          {% endfor %}
+          <!-- конец ячеек доски -->
+        </tr>
+        <!-- конец последней строки с градацией ------------------------------------------>
+        {% if loop.last %}
+        <tr>
+          <td colspan="1" class="cell_goods">
+          </td>
+          {% for line in sced %}
+            <td colspan="{{ line["parts"] }}" class="cell calendar">
+              {{ line["grad"] }}
+            </td>
+          {% endfor %}
+        </tr>
+        {% endif %}
+        <!-- конец последней строки с градацией ------------------------------------>
+      </tbody>
+    </table>
+    {% endfor %}
+  </div>
+  <!-- конец доски с календарем -->
+
+<!-- если нет записей в базе данных то подсказка как добавить -->
+{% else %}
+<div class="d-flex align-items-center flex-column">
+  <p class="mb-5 mt-5">Use the <span style="background-color: #0d6efd;">Add</span> button to add the necessary documents. Specify the title, expiration date, and additional information
+    (time required for reprocessing, limited action time if applicable). All entries will be reflected on the board here.
+      If needed, you can modify or remove entries by clicking on the title.
+  </p>
+</div>
+{% endif %}
+<!-- конец условий по базе -->
+
+<!-- кнопка добавления и сегодняшняя дата -->
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <div>
+    <span style="background-color: #b1b1e8;">today {{ today }}</span>
+  </div>
+  <div>
+    <a type="button" class="btn btn-primary" href="/editor">
+      Add
+    </a>
+  </div>
+</div>
+<!-- конец кнопки добавления и сегодняшней даты -->
+
+<!-- если записи есть -->
+{% if goods %}
+  <!-- пояснения -->
+  <p>
+    This is not a calendar; it's a countdown of days, weeks, or months, indicating how much time remains for your document
+    from the current moment, conveniently scaled over periods of one/three/six months or one/five/ten years.
+  </p>
+  <p>
+    The document's validity period without restrictions is highlighted in <span
+      style="background-color: #198754;">green</span>, the restricted validity period (for
+    example, some countries do not allow entry with a passport that has less than six months remaining) is highlighted in
+    <span style="background-color: #ffc007;">yellow</span>, and the time required for renewal is marked in <span
+      style="background-color: #dc3545;">red</span>. Sorting and selecting a convenient display scale are
+    available options.
+  </p>
+{% endif %}
+<!-- конец если записи есть -->
+
+{% endblock %}

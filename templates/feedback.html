@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<div class="d-flex align-items-center flex-column">
+    <div class="mb-3">
+        <h2>
+            Feedback
+        </h2>
+    </div>
+    <form action="/feedback" method="post" class="d-flex align-items-center flex-column">
+        <div class="mb-0">
+            <label class="form-label">
+                You can leave feedback or a wish for the application, a bug report
+                or a feature request. Or whatever you want.
+            </label>
+            </div>
+            <textarea name="feedback" autofocus required rows="10" class="form-control">
+            </textarea>
+            <div class="form-text mb-3">
+                If you are hoping for feedback, then leave an email address at the
+                end of the message. No more than 1000 characters.
+            </div>
+            <button type="submit" class="btn btn-primary">
+                Send
+            </button>
+    </form>
+</div>
+
+{% endblock %}
