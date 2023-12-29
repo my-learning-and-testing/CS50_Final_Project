@@ -25,6 +25,8 @@ The board can be sorted alphabetically or by expiration date. Users can also pro
 
 The application is adapted for use on mobile screens.
 
+Under the hood, there is a lightweight Flask framework that handles interaction with the SQLite database and the user. Stylized CSS HTML pages are generated using Jinja templates. During the development of the application, I used ready-made Bootstrap styles, the Python CS50 library, and a cat from memegen.
+
     README.md           - you are here
     start.sql           - SQLite commands for creating a database
     data.db             - database with demo data
