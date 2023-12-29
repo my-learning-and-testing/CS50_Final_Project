@@ -1,7 +1,6 @@
 # Board
 #### Video Demo:  <https://youtu.be/Ag_5fCMwokY>
-#### Description:
-Web application for collaborative visualization of document expiration periods.
+#### Description:  Web application for collaborative visualization of document expiration periods.
 
 In everyday life, we use passports, credit cards, driver's licenses, insurance, visas, and more. Each of them has its own expiration date, and it can be challenging to keep track of everything. Discovering an expired credit card, passport, or driver's license during a trip is never pleasant. This application is designed to address this issue.
 
